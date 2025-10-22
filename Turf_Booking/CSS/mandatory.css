@@ -95,6 +95,7 @@ ul {
   border-radius: 25px;
   font-weight: 600;
   transition: all 0.3s ease;
+  width: 9rem;
 }
 
 .nav-links .login-btn:hover,
@@ -114,7 +115,7 @@ ul {
   z-index: 1001;
   flex-direction: column;
   gap: 5px;
-  width: 30px;
+  width: 60px;
 }
 
 .hamburger .line {

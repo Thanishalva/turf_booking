@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In - The WT Turf</title>
+    <link rel="stylesheet" href="./Css3/login.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="title">
+        <h1>Welcome back</h1>
+        <p>Log in to manage your bookings at The WT Turf.</p>
+      </header>
+
+      <section class="card" aria-label="Login form">
+        <form action="#" method="POST" novalidate>
+          <div class="form-grid">
+            <!-- Email Field -->
+            <div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g., john.doe@example.com"
+                  autocomplete="email"
+                  required
+                  aria-describedby="email-error"
+                />
+              </div>
+              <!-- Added ARIA Error Container -->
+              <div id="email-error" class="field-error" role="alert"></div>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+              <div class="field">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Your password"
+                  autocomplete="current-password"
+                  required
+                  aria-describedby="password-error"
+                />
+              </div>
+              <!-- Added ARIA Error Container -->
+              <div id="password-error" class="field-error" role="alert"></div>
+            </div>
+
+            <div class="row">
+              <label class="checkbox" for="remember">
+                <input type="checkbox" id="remember" name="remember" />
+                Remember me
+              </label>
+              <a class="link" href="#">Forgot password?</a>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn">Log In</button>
+            </div>
+
+            <p class="helper">
+              New here?
+              <a class="link" href="signup.html">Create an account</a>
+            </p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Accessible Validation Script for Login -->
+    <script>
+      (function () {
+        const form = document.querySelector("form");
+        const fields = {
+          email: document.getElementById("email"),
+          password: document.getElementById("password"),
+        };
+
+        const errorMessages = {
+          email: document.getElementById("email-error"),
+          password: document.getElementById("password-error"),
+        };
+
+        function clearErrors() {
+          Object.keys(fields).forEach((key) => {
+            if (errorMessages[key]) errorMessages[key].textContent = "";
+            fields[key].removeAttribute("aria-invalid");
+          });
+        }
+
+        function setError(key, message) {
+          if (errorMessages[key]) errorMessages[key].textContent = message;
+          fields[key].setAttribute("aria-invalid", "true");
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearErrors();
+          let firstInvalid = null;
+
+          // Get form values
+          const emailVal = fields.email.value.trim();
+          const passwordVal = fields.password.value; // No trim
+
+          // 1. Email
+          if (!emailVal) {
+            setError("email", "Please enter your email address.");
+            firstInvalid = firstInvalid || fields.email;
+          } else if (!fields.email.checkValidity()) {
+            setError("email", "Please enter a valid email address.");
+            firstInvalid = firstInvalid || fields.email;
+          }
+
+          // 2. Password
+          if (!passwordVal) {
+            // No trim on password
+            setError("password", "Please enter your password.");
+            firstInvalid = firstInvalid || fields.password;
+          }
+
+          if (firstInvalid) {
+            firstInvalid.focus();
+          } else {
+            // All good! Check credentials in localStorage
+            try {
+              const storedEmail = localStorage.getItem("signup_email");
+              const storedPassword = localStorage.getItem("signup_password");
+
+              if (emailVal === storedEmail && passwordVal === storedPassword) {
+                // SUCCESS: Redirect to index.html
+                console.log("Login successful! Redirecting...");
+                window.location.href = "index.html";
+              } else {
+                // FAIL: Show an error
+                setError("email", "Invalid email or password.");
+                fields.email.focus();
+              }
+            } catch (error) {
+              console.error("Error reading from localStorage", error);
+              setError("email", "An error occurred. Please try again.");
+              fields.email.focus();
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

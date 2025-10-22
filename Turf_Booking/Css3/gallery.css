@@ -1,0 +1,75 @@
+:root {
+        --deep-blue: #1e3a8a;
+        --bg: #f8fafc;
+      }
+
+      /* Gallery Title */
+      .gallery-header {
+        text-align: center;
+        padding: 40px 20px 20px 20px;
+        background-color: var(--bg);
+      }
+      .gallery-header h1 {
+        color: var(--deep-blue);
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+      }
+
+      /* Gallery Container - Masonry Style */
+      .container-gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--bg);
+
+        /* Masonry layout using columns */
+        column-count: 3;
+        column-gap: 20px;
+      }
+
+      .container-gallery .wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+        /* This is the magic for masonry */
+        break-inside: avoid;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .container-gallery .wrapper:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .container-gallery .img-gallery {
+        width: 100%;
+        max-width: 100% !important;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      /* Defensive override for any global img rules */
+      .container-gallery img {
+        max-width: 100% !important;
+        height: auto;
+      }
+
+      .container-gallery .wrapper:hover .img-gallery {
+        transform: scale(1.05);
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 900px) {
+        .container-gallery {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .container-gallery {
+          column-count: 1;
+        }
+      }

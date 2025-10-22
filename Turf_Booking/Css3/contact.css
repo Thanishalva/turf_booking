@@ -1,0 +1,204 @@
+ :root {
+        --teal: #2dd4bf;
+        --teal-dark: #14b8a6;
+        --deep-blue: #1e3a8a;
+        --text: #333;
+        --muted: #666;
+        --border: #e5e7eb;
+        --card: #ffffff;
+        --bg: #f8fafc;
+      }
+
+      /* Scope all inner styles to .contact-standalone to avoid conflicts */
+      .contact-standalone {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        background: var(--bg);
+      }
+      .contact-standalone .title {
+        text-align: center;
+        margin-bottom: 2.2rem;
+      }
+      .contact-standalone .title h1 {
+        color: var(--deep-blue);
+        font-weight: 800;
+        font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.2px;
+      }
+      .contact-standalone .title p {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .contact-standalone .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: clamp(1.5rem, 3vw, 3rem);
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Left: details list */
+      .contact-standalone .list {
+        display: grid;
+        gap: 1rem;
+      }
+      .contact-standalone .card {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 1rem;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px 18px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      }
+      .contact-standalone .ico {
+        height: 64px;
+        width: 64px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 1.25rem;
+        color: #0f766e;
+        background: #e0f2f1;
+      }
+      .contact-standalone .ico.email {
+        color: #047857;
+        background: #d1fae5;
+        border-radius: 50%;
+      }
+      .contact-standalone .ico.call {
+        color: #b45309;
+        background: #fef3c7;
+        border-radius: 50%;
+      }
+      .contact-standalone .card h3 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--deep-blue);
+      }
+      .contact-standalone .card p {
+        margin: 2px 0 0 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      /* Right: form */
+      .contact-standalone .form {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      }
+      .contact-standalone .row {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 720px) {
+        .contact-standalone .row.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .contact-standalone label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #445;
+        margin-bottom: 6px;
+      }
+      .contact-standalone input,
+      .contact-standalone textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        color: #222;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .contact-standalone textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .contact-standalone input::placeholder,
+      .contact-standalone textarea::placeholder {
+        color: #9aa1a9;
+      }
+      .contact-standalone input:focus,
+      .contact-standalone textarea:focus {
+        outline: none;
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25);
+      }
+
+      .contact-standalone .actions {
+        margin-top: 8px;
+      }
+      .contact-standalone .btn {
+        width: 100%;
+        appearance: none;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: var(--teal);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.06s ease;
+      }
+      .contact-standalone .btn:hover {
+        background: var(--teal-dark);
+      }
+      .contact-standalone .btn:active {
+        transform: translateY(1px);
+      }
+      /* Make all controls consistent */
+      .contact-standalone .form input,
+      .contact-standalone .form textarea {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        font: inherit;
+      }
+
+      /* Normalize email input across all states */
+      .contact-standalone .form input[type="email"],
+      .contact-standalone .form input[type="email"]:hover,
+      .contact-standalone .form input[type="email"]:active,
+      .contact-standalone .form input[type="email"]:focus,
+      .contact-standalone .form input[type="email"]:invalid {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 46px;
+        padding: 12px 14px;
+        border: 1px solid var(--border) !important;
+        border-radius: 10px !important;
+        background: #fff;
+        color: #222;
+        outline: none !important;
+        box-shadow: none !important;
+        background-clip: padding-box;
+      }
+
+      /* Your intended focus look (teal) */
+      .contact-standalone .form input[type="email"]:focus {
+        border-color: var(--teal) !important;
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25) !important;
+      }
+
+      /* Responsive stack for outer grid */
+      @media (max-width: 960px) {
+        .contact-standalone .grid {
+          grid-template-columns: 1fr;
+          max-width: 680px;
+        }
+      }

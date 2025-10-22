@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - The WT Turf</title>
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* --- Basic Reset & Global Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* --- Header & Navigation --- */
+    /* --- Header & Navigation --- */
+    .header {
+      background-color: #2dd4bf;
+      padding: 1rem 0;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo a:hover,
+    .logo a:focus {
+      opacity: 0.8;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: #0d9488;
+    }
+
+    .nav-links .login-btn {
+      background-color: white;
+      color: #2dd4bf;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links .login-btn:hover,
+    .nav-links .login-btn:focus {
+      background-color: #0d9488;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+      flex-direction: column;
+      gap: 5px;
+      width: 30px;
+    }
+
+    .hamburger .line {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hamburger animation to X */
+    .hamburger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    .hamburger.active .line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Mobile Navigation (Menubar) */
+    .menubar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: #2dd4bf;
+      padding: 5rem 2rem 2rem;
+      transition: right 0.4s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .menubar.active {
+      right: 0;
+    }
+
+    .menubar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menubar li {
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menubar li:last-child {
+      border-bottom: none;
+    }
+
+    .menubar a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem 0;
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: padding-left 0.3s ease;
+    }
+
+    .menubar a:hover,
+    .menubar a:focus {
+      padding-left: 10px;
+      color: #0d9488;
+    }
+
+    .menubar .login-btn {
+      background-color: white;
+      color: #2dd4bf;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .menubar .login-btn:hover,
+    .menubar .login-btn:focus {
+      background-color: #0d9488;
+      color: white;
+    }
+
+    /* Overlay backdrop */
+    .menubar::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: -1;
+    }
+
+    .menubar.active::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo a {
+        font-size: 1.25rem;
+      }
+
+      .menubar {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 0.75rem 0;
+      }
+
+      .logo a {
+        font-size: 1.1rem;
+      }
+
+      .menubar {
+        width: 85%;
+        max-width: 300px;
+        padding: 5rem 1.5rem 2rem;
+      }
+    }
+
+    /* --- Main Content --- */
+    .main-content {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .title-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .title-section h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1e3a8a;
+    }
+
+    .title-section p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    /* --- Contact Layout --- */
+    .contact-layout {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .contact-details,
+    .contact-form-wrapper {
+      flex: 1;
+    }
+
+    /* --- Contact Details (Left) --- */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .contact-item .icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .icon.location {
+      background-color: #e0f2f1;
+      color: #14b8a6;
+    }
+
+    .icon.email {
+      background-color: #d1fae5;
+      color: #059669;
+      border-radius: 50%;
+    }
+
+    .icon.call {
+      background-color: #fef3c7;
+      color: #d97706;
+      border-radius: 50%;
+    }
+
+    .contact-item h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+
+    .contact-item p {
+      color: #666;
+    }
+
+    /* --- Contact Form (Right) --- */
+    .contact-form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .form-row .form-group {
+      width: 100%;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2dd4bf;
+      box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.3);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      background: #2dd4bf;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #14b8a6;
+    }
+
+
+
+    /* --- Responsive Design --- */
+    @media (max-width: 992px) {
+      .contact-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .contact-details,
+      .contact-form-wrapper {
+        width: 100%;
+        max-width: 550px;
+      }
+
+      .contact-details {
+        align-items: center;
+      }
+
+      .contact-item {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #2dd4bf;
+        /* REVERTED MOBILE MENU COLOR */
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 10;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .main-content {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .title-section h1 {
+        font-size: 2.2rem;
+      }
+
+      .title-section p {
+        font-size: 1rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .contact-form {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      .title-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .contact-item {
+        gap: 1rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-item .icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+      }
+
+      .contact-item h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+
+
+    .footer {
+      background-color: #3a4d6a;
+      color: #b8c5d6;
+      padding: 60px 0 0 0;
+      position: relative;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h2 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p {
+      line-height: 1.6;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-column ul li a {
+      color: #b8c5d6;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffffff;
+    }
+
+    .footer-column iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .footer-copyright {
+      background-color: #2c3a50;
+      text-align: center;
+      padding: 20px 0;
+      color: #b8c5d6;
+      font-size: 14px;
+    }
+
+    .footer-copyright p {
+      margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer {
+        padding: 40px 0 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <!-- Header Section -->
+  <header class="header">
+    <nav class="navbar container" role="navigation" aria-label="Main navigation">
+      <div class="logo">
+        <a href="index.html" aria-label="The WT Turf - Home">The WT Turf</a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="pricing.html">PRICING</a></li>
+        <li><a href="facility.html">FACILITY</a></li>
+        <li><a href="rules.html">RULES</a></li>
+        <li><a href="events.html">EVENTS</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="login.html" class="login-btn">LOGIN</a></li>
+      </ul>
+
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="menubar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation (Menubar) -->
+    <div class="menubar" id="menubar">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="pricing.html">PRICING</a></li>
+        <li><a href="facility.html">FACILITY</a></li>
+        <li><a href="rules.html">RULES</a></li>
+        <li><a href="events.html">EVENTS</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="login.html" class="login-btn">LOGIN</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="main-content">
+    <div class="container">
+      <div class="title-section">
+        <h1>Getting Touch</h1>
+        <p>Feel free to reach out to us for any queries.</p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Left Column: Contact Details -->
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="icon location">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h3>Location:</h3>
+              <p>Manipal, Udupi</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon email"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h3>Email Address:</h3>
+              <p>turf@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon call"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h3>Call Us:</h3>
+              <p>+91 9988779876</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="contact-form-wrapper">
+          <form action="#" method="POST" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g., John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" placeholder="e.g., +91-1234567890" required />
+            </div>
+            <div class="form-group">
+              <label for="query">Write your Query</label>
+              <textarea id="query" name="query" placeholder="Let us know how we can help..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h2>About The WT Turf</h2>
+          <p>After a long and exhausting day, WT Turf is the perfect place to unwind, recharge, and have fun. Step in,
+            play hard, and leave refreshed!</p>
+        </div>
+
+        <div class="footer-column">
+          <h2>The WT Turf Links</h2>
+          <ul>
+            <li><a href="facility.html">Facility</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="rules.html">Rules</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h2>Location</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.0017455930715!2d74.79000777508308!3d13.350167337001102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1760529335115!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>© 2025 The WT Turf. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Footer Section -->
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const menubar = document.querySelector(".menubar");
+
+    hamburger.addEventListener("click", () => {
+      const isActive = menubar.classList.toggle("active");
+      hamburger.classList.toggle("active");
+
+      // Update ARIA attribute
+      hamburger.setAttribute("aria-expanded", isActive);
+
+      // Prevent scrolling when menu is open
+      if (isActive) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Close menu when clicking on overlay
+    menubar.addEventListener("click", (e) => {
+      if (e.target === menubar || e.target.closest("a")) {
+        menubar.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menubar.classList.contains("active")) {
+        menubar.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+:root {
+        --teal: #2dd4bf;
+        --teal-dark: #14b8a6;
+        --deep-blue: #1e3a8a;
+        --bg: #f8fafc;
+        --text: #333;
+        --muted: #666;
+        --border: #e5e7eb;
+        --white: #fff;
+        --error-red: #d9534f; /* Added error color */
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans";
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .title h1 {
+        color: var(--deep-blue);
+        font-weight: 900;
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+        letter-spacing: 0.2px;
+        margin-bottom: 6px;
+      }
+      .title p {
+        color: var(--muted);
+      }
+
+      .card {
+        max-width: 520px;
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 26px;
+        border: 1px solid var(--border);
+      }
+      .form-grid {
+        display: grid;
+        gap: 16px;
+      }
+      .field label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #444;
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        color: #222;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .field input::placeholder {
+        color: #9aa1a9;
+      }
+
+      /* Updated focus style to NOT apply when invalid */
+      .field input:focus:not([aria-invalid="true"]) {
+        outline: none;
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25);
+      }
+
+      /* --- Accessibility Additions --- */
+      .field input[aria-invalid="true"] {
+        border-color: var(--error-red);
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.25);
+      }
+      .field-error {
+        color: var(--error-red);
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 4px;
+        min-height: 1.2em; /* Prevents layout shift */
+      }
+      /* --- End Accessibility --- */
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: #444;
+        font-size: 0.95rem;
+      }
+      .checkbox input {
+        width: 18px;
+        height: 18px;
+      }
+      .link {
+        color: var(--teal);
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .link:hover {
+        text-decoration: underline;
+      }
+
+      .actions {
+        margin-top: 6px;
+      }
+      .btn {
+        width: 100%;
+        appearance: none;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: var(--teal);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.06s;
+      }
+      .btn:hover {
+        background: var(--teal-dark);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .helper {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 12px;
+      }
+      .top-nav {
+        max-width: 520px;
+        margin: 0 auto 10px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .top-nav a {
+        color: var(--teal);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .top-nav a:hover {
+        text-decoration: underline;
+      }

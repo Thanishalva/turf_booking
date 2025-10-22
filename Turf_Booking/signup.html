@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - The WT Turf</title>
+    <link rel="stylesheet" href="./Css3//signup.css" />
+  </head>
+  <body>
+    <main class="wrapper">
+      <header class="title">
+        <h1>Create your account</h1>
+        <p>Sign up to book your next slot at The WT Turf.</p>
+      </header>
+
+      <section class="card" aria-label="Sign up form">
+        <!-- Added novalidate to enable custom JS validation -->
+        <form action="#" method="POST" novalidate>
+          <div class="form-grid">
+            <!-- Full Name Field -->
+            <div>
+              <div class="field">
+                <label for="fullName">Full Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="e.g., John Doe"
+                  autocomplete="name"
+                  maxlength="30"
+                  required
+                  aria-describedby="fullName-error"
+                />
+              </div>
+              <!-- Added ARIA Error Container -->
+              <div id="fullName-error" class="field-error" role="alert"></div>
+            </div>
+
+            <!-- Email Field -->
+            <div>
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g., john.doe@example.com"
+                  autocomplete="email"
+                  required
+                  aria-describedby="email-error"
+                />
+              </div>
+              <!-- Added ARIA Error Container -->
+              <div id="email-error" class="field-error" role="alert"></div>
+            </div>
+
+            <!-- Phone Field -->
+            <div>
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="e.g: 1234567890"
+                  autocomplete="tel"
+                  pattern="^[0-9+\-\s()]{7,20}$"
+                  required
+                  aria-describedby="phone-error"
+                />
+              </div>
+              <!-- Added ARIA Error Container -->
+              <div id="phone-error" class="field-error" role="alert"></div>
+            </div>
+
+            <div class="form-row two">
+              <!-- Password Field -->
+              <div>
+                <div class="field">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a strong password"
+                    minlength="6"
+                    autocomplete="new-password"
+                    required
+                    aria-describedby="password-error"
+                    pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    title="Must be at least 6 characters, and contain at least one uppercase and one lowercase letter."
+                  />
+                </div>
+                <!-- Added ARIA Error Container -->
+                <div id="password-error" class="field-error" role="alert"></div>
+              </div>
+
+              <!-- Confirm Password Field -->
+              <div>
+                <div class="field">
+                  <label for="confirmPassword">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Re-enter password"
+                    minlength="6"
+                    autocomplete="new-password"
+                    required
+                    aria-describedby="confirmPassword-error"
+                  />
+                </div>
+                <!-- Added ARIA Error Container -->
+                <div
+                  id="confirmPassword-error"
+                  class="field-error"
+                  role="alert"
+                ></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn">Create Account</button>
+            </div>
+
+            <p class="helper">
+              Already have an account?
+              <a class="link" href="login.html">Log in</a>
+            </p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Accessible Validation Script -->
+    <script>
+      (function () {
+        const form = document.querySelector("form");
+        const fields = {
+          fullName: document.getElementById("fullName"),
+          email: document.getElementById("email"),
+          phone: document.getElementById("phone"),
+          password: document.getElementById("password"),
+          confirmPassword: document.getElementById("confirmPassword"),
+        };
+
+        // Get all error message containers
+        const errorMessages = {
+          fullName: document.getElementById("fullName-error"),
+          email: document.getElementById("email-error"),
+          phone: document.getElementById("phone-error"),
+          password: document.getElementById("password-error"),
+          confirmPassword: document.getElementById("confirmPassword-error"),
+        };
+
+        function clearErrors() {
+          Object.keys(fields).forEach((key) => {
+            if (errorMessages[key]) errorMessages[key].textContent = "";
+            fields[key].removeAttribute("aria-invalid");
+          });
+        }
+
+        function setError(key, message) {
+          if (errorMessages[key]) errorMessages[key].textContent = message;
+          fields[key].setAttribute("aria-invalid", "true");
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearErrors();
+          let firstInvalid = null;
+
+          // --- Validation Rules ---
+
+          // 1. Full Name
+          const fullNameVal = fields.fullName.value.trim();
+          if (!fullNameVal) {
+            setError("fullName", "Please enter your full name.");
+            firstInvalid = firstInvalid || fields.fullName;
+          } else if (fullNameVal.length > 30) {
+            setError("fullName", "Name must be 30 characters or less.");
+            firstInvalid = firstInvalid || fields.fullName;
+          }
+
+          // 2. Email
+          const emailVal = fields.email.value.trim();
+          if (!emailVal) {
+            setError("email", "Please enter your email address.");
+            firstInvalid = firstInvalid || fields.email;
+          } else if (!fields.email.checkValidity()) {
+            setError("email", "Please enter a valid email address.");
+            firstInvalid = firstInvalid || fields.email;
+          }
+
+          // 3. Phone
+          if (!fields.phone.value.trim()) {
+            setError("phone", "Please enter your phone number.");
+            firstInvalid = firstInvalid || fields.phone;
+          } else if (!fields.phone.checkValidity()) {
+            setError("phone", "Please enter a valid phone number.");
+            firstInvalid = firstInvalid || fields.phone;
+          }
+
+          // 4. Password
+          const passwordVal = fields.password.value; // No trim, spaces count
+          if (!passwordVal) {
+            setError("password", "Please create a password.");
+            firstInvalid = firstInvalid || fields.password;
+          } else if (passwordVal.length < 6) {
+            setError("password", "Password must be at least 6 characters.");
+            firstInvalid = firstInvalid || fields.password;
+          } else if (!/[A-Z]/.test(passwordVal)) {
+            setError("password", "Must contain at least one uppercase letter.");
+            firstInvalid = firstInvalid || fields.password;
+          } else if (!/[a-z]/.test(passwordVal)) {
+            setError("password", "Must contain at least one lowercase letter.");
+            firstInvalid = firstInvalid || fields.password;
+          }
+
+          // 5. Confirm Password
+          const confirmPasswordVal = fields.confirmPassword.value;
+          if (!confirmPasswordVal) {
+            setError("confirmPassword", "Please confirm your password.");
+            firstInvalid = firstInvalid || fields.confirmPassword;
+          } else if (confirmPasswordVal !== passwordVal) {
+            setError("confirmPassword", "Passwords do not match.");
+            firstInvalid = firstInvalid || fields.confirmPassword;
+          }
+
+          // --- End Validation ---
+
+          if (firstInvalid) {
+            firstInvalid.focus();
+          } else {
+            // All good! Submit the form (or show a success message)
+            console.log("Form is valid and ready to submit.");
+
+            // --- Simple localStorage Code ---
+            try {
+              // WARNING: Storing plain-text passwords in localStorage is
+              // not secure. This is for demonstration only.
+              localStorage.setItem("signup_email", emailVal);
+              localStorage.setItem("signup_password", passwordVal);
+              console.log("Email and password saved to localStorage.");
+
+              // *** THIS IS THE FIX ***
+              // This line tells the browser to go to index.html
+              window.location.href = "index.html";
+            } catch (error) {
+              console.error("Error saving to localStorage", error);
+            }
+            // --- End localStorage Code ---
+
+            // We keep form.submit() commented out, because
+            // window.location.href is handling the redirect.
+            // form.submit();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

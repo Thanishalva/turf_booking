@@ -1,0 +1,260 @@
+/* --- Main Content --- */
+.main-content {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title-section h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1e3a8a;
+}
+
+.title-section p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* --- Contact Layout --- */
+.contact-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.contact-details,
+.contact-form-wrapper {
+  flex: 1;
+}
+
+/* --- Contact Details (Left) --- */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contact-item .icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.icon.location {
+  background-color: #e0f2f1;
+  color: #14b8a6;
+}
+
+.icon.email {
+  background-color: #d1fae5;
+  color: #059669;
+  border-radius: 50%;
+}
+
+.icon.call {
+  background-color: #fef3c7;
+  color: #d97706;
+  border-radius: 50%;
+}
+
+.contact-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.contact-item p {
+  color: #666;
+}
+
+/* --- Contact Form (Right) --- */
+.contact-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-row .form-group {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: #2dd4bf;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #14b8a6;
+}
+
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .contact-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .contact-details,
+  .contact-form-wrapper {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .contact-details {
+    align-items: center;
+  }
+
+  .contact-item {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #2dd4bf;
+    /* REVERTED MOBILE MENU COLOR */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .main-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .title-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .title-section p {
+    font-size: 1rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .title-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .contact-item {
+    gap: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-item .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7rem;
+  }
+
+  .contact-item h3 {
+    font-size: 1.2rem;
+  }
+}

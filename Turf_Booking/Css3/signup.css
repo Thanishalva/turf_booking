@@ -1,0 +1,160 @@
+:root {
+        --teal: #2dd4bf;
+        --teal-dark: #14b8a6;
+        --deep-blue: #1e3a8a;
+        --text: #333;
+        --muted: #666;
+        --border: #e5e7eb;
+        --bg: #f8fafc;
+        --white: #fff;
+        --error-red: #d9534f; /* Added error color */
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* Container */
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Title */
+      .title {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      .title h1 {
+        color: var(--deep-blue);
+        font-weight: 800;
+        font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+        letter-spacing: 0.2px;
+        margin-bottom: 6px;
+      }
+      .title p {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      /* Card */
+      .card {
+        max-width: 560px;
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 28px;
+      }
+
+      /* Form */
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px; /* This gap is for the form items */
+      }
+      .form-row {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 640px) {
+        .form-row.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #444;
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fff;
+        color: #222;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .field input::placeholder {
+        color: #9aa1a9;
+      }
+
+      /* Updated focus style to NOT apply when invalid */
+      .field input:focus:not([aria-invalid="true"]) {
+        outline: none;
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25);
+      }
+
+      /* --- Accessibility Additions --- */
+      .field input[aria-invalid="true"] {
+        border-color: var(--error-red);
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.25);
+      }
+      .field-error {
+        color: var(--error-red);
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 4px;
+        min-height: 1.2em; /* Prevents layout shift */
+      }
+      /* --- End Accessibility --- */
+
+      /* Button */
+      .actions {
+        margin-top: 8px;
+      }
+      .btn {
+        width: 100%;
+        appearance: none;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: var(--teal);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.06s ease;
+      }
+      .btn:hover {
+        background: var(--teal-dark);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      /* Helper text */
+      .helper {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 12px;
+      }
+      .link {
+        color: var(--teal);
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .link:hover {
+        text-decoration: underline;
+      }

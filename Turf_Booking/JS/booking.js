@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const bookingDetails = document.getElementById("booking-details"); // The fieldset
   
   const fullName = document.getElementById("name");
-  const email = document.getElementById("email");
   const contact = document.getElementById("phone");
   const date = document.getElementById("date");
   const msg = document.getElementById("msg");
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Regex & Slot Data ---
   const nameRegex = /^[A-Z][a-zA-Z\s]*$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10}$/;
   const timeSlots = [
     "6-7 AM", "7-8 AM", "8-9 AM",
@@ -77,8 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
   
-  // ... (Your existing validateFullName, validateEmail, validateContact, validateDate functions) ...
-  
   function validateFullName() {
     const value = fullName.value.trim();
     if (value.length < 3) {
@@ -93,16 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
     clearError(fullName);
-    return true;
-  }
-
-  function validateEmail() {
-    const value = email.value.trim();
-    if (!emailRegex.test(value)) {
-      showError(email, "Please enter a valid email address");
-      return false;
-    }
-    clearError(email);
     return true;
   }
 
@@ -200,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Event Listeners ---
   fullName.addEventListener("input", validateFullName);
-  email.addEventListener("input", validateEmail);
   contact.addEventListener("input", validateContact);
   date.addEventListener("change", () => {
     validateDate();
@@ -217,7 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run all validations
     const isTurfValid = validateTurfType();
     const isFullNameValid = validateFullName();
-    const isEmailValid = validateEmail();
     const isContactValid = validateContact();
     const isDateValid = validateDate();
     const isSlotValid = validateSlotSelection();

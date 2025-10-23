@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/booking.css" />
     <link rel="stylesheet" href="assets/css/stylev15.css" />
     
-    <title>Booking - The WT Turf</title>
+    <title>Home - The WT Turf</title>
     <!-- Font Awesome CDN for icons -->
     <link
       rel="stylesheet"
@@ -30,56 +30,59 @@
   <body>
     <!-- Header Section -->
     <header class="header">
-    <nav class="navbar container" role="navigation" aria-label="Main navigation">
-      <div class="logo">
-        <a href="index.html" aria-label="The WT Turf - Home">
-          <img src="assets/img/logo.png" alt="The WT Turf Logo">
-        </a>
+      <nav
+        class="navbar container"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div class="logo">
+          <a href="index.html" aria-label="The WT Turf - Home">
+            <img src="assets/img/logo.png" alt="The WT Turf Logo" />
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav-links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="pricing.html">PRICING</a></li>
+          <li><a href="facility.html">FACILITY</a></li>
+          <li><a href="rules.html">RULES</a></li>
+          <li><a href="events.html">EVENTS</a></li>
+          <li><a href="booking.html" class="active">BOOKING</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="login.html" class="login-btn">LOGIN</a></li>
+        </ul>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menubar">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation (Menubar) -->
+      <div class="menubar" id="menubar">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="pricing.html">PRICING</a></li>
+          <li><a href="facility.html">FACILITY</a></li>
+          <li><a href="rules.html">RULES</a></li>
+          <li><a href="events.html">EVENTS</a></li>
+          <li><a href="booking.html" class="active">BOOKING</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="login.html" class="login-btn">LOGIN</a></li>
+        </ul>
       </div>
-
-      <!-- Desktop Navigation -->
-      <ul class="nav-links">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="pricing.html">PRICING</a></li>
-        <li><a href="facility.html">FACILITY</a></li>
-        <li><a href="rules.html">RULES</a></li>
-        <li><a href="events.html">EVENTS</a></li>
-        <li><a href="gallery.html">GALLERY</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <!-- <li><a href="login.html">LOGIN</a></li> -->
-        <li><a href="login.html" class="login-btn">Book Now</a></li>
-      </ul>
-
-      <!-- Hamburger Menu Button -->
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
-        aria-controls="menubar">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </button>
-    </nav>
-
-    <!-- Mobile Navigation (Menubar) -->
-    <div class="menubar" id="menubar">
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="pricing.html">PRICING</a></li>
-        <li><a href="facility.html">FACILITY</a></li>
-        <li><a href="rules.html">RULES</a></li>
-        <li><a href="events.html">EVENTS</a></li>
-        <!-- <li><a href="booking.html">BOOKING</a></li> -->
-        <li><a href="gallery.html">GALLERY</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <li><a href="login.html" class="login-btn">Book Now</a></li>
-      </ul>
-    </div>
-  </header>
+    </header>
     <!-- End Header Section -->
 
     <main class="booking-section">
-      <h1 style="color: #2c3e50;">Book Your Turf Slot</h1>
+      <h1 style="color: #2c3e50;"> Book Your Turf Slot</h1>
       <p>Select your date to check slot availability.</p>
 
       <p class="required-note">
@@ -93,6 +96,9 @@
             <option value="cricket">Cricket Turf</option>
             <option value="tennis">Tennis Turf</option>
             <option value="football">Football Turf</option>
+            <option value="badminton">Badminton Turf</option>
+            <option value="softball">Softball Turf</option>
+            <option value="baseball">Baseball Turf</option>
           </select>
         <span id="turfTypeError" class="error-message" aria-live="polite"></span>
 
@@ -175,5 +181,6 @@
     <!-- Footer Section -->
 
     <script src="JS/booking.js"></script>
+    <script src="JS/script.js"></script>
   </body>
 </html>

@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const turfPrices = {
     "cricket": 1500,
     "tennis": 2000,
-    "football": 4000
+    "football": 4000,
+    "badmintion": 750,
+    "softball":1000,
+    "baseball":1800
   };
 
   // --- Form Elements ---
